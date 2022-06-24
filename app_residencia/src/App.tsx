@@ -4,12 +4,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import React from 'react';
 import Login from './pages/login';
+import Home from './pages/home';
 
 const StackNavigation = createNativeStackNavigator();
 
 export default () => {
     return (
-        <Login />
+        <Home />
+        //<Login />
     );
     // return (
     //     <NavigationContainer>
@@ -24,5 +26,5 @@ export default () => {
     //             />
     //         </StackNavigation.Navigator>
     //     </NavigationContainer>
-    );
+
 }
