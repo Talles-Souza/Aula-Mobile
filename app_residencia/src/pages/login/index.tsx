@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { Button, Icon, Input, Text } from "react-native-elements";
 
-const Login = () => {
+const Login = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
     const handleLogin = ({ email, senha }) => {
         console.log("Email : ", email, "Senha :", senha);
-
+        navigation.navigate('Home')
     }
 
     return (
