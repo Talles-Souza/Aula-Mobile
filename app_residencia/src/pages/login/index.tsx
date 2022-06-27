@@ -11,7 +11,7 @@ const Login = ({ navigation }) => {
     const handleLogin = async (email: string, senha: string) => {
         console.log("Email : ", email, "Senha :", senha);
 
-        const RespostaLogin = LoginService(email, senha)
+        const RespostaLogin = await LoginService(email, senha)
         if (!RespostaLogin) {
             Alert.alert(
                 "Erro",
@@ -57,7 +57,7 @@ const Login = ({ navigation }) => {
 
             <Button
                 title='Entrar'
-                onPress={() => handleLogin({ email, senha })}
+                onPress={() => handleLogin(email, senha)}
                 titleStyle={styles.title_Button}
             />
         </View>
