@@ -8,8 +8,10 @@ import { Title } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 
 
-const Home = () => {
+const Home = ({ route, navigation }) => {
 
+    const { token } = route.params;
+    console.log('Token' + token);
 
     return (
         <ScrollView >
