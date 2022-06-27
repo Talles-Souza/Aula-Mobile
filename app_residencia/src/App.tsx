@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import React from 'react';
 import Login from './pages/login';
@@ -25,10 +26,7 @@ const BottomTabNavigation = () => {
 const StackNavigation = createNativeStackNavigator();
 
 export default () => {
-    // return (
-    //     //<Home />
-    //     //<Login />
-    // );
+
     return (
         <NavigationContainer>
             <StackNavigation.Navigator>
@@ -38,13 +36,29 @@ export default () => {
                 />
                 <StackNavigation.Screen
                     name='Home'
-                    component={BottomTabNavigation}
-                />
-                <StackNavigation.Screen
-                    name='Categorias'
-                    component={Categorias}
+                    component={NavigationDrawer}
                 />
             </StackNavigation.Navigator>
         </NavigationContainer>
     );
+}
+
+const DrawerNavigation = createDrawerNavigator();
+const NavigationDrawer = () => {
+
+    return (
+        <DrawerNavigation.Navigator>
+            <DrawerNavigation.Screen
+                name='TabNavigationScreen'
+                component={Home}
+                options={{ title: 'Testando' }}
+            />
+
+            <DrawerNavigation.Screen
+                name="CategoriasDrawerScreen"
+                component={Categorias}
+            />
+
+        </DrawerNavigation.Navigator>
+    )
 }
