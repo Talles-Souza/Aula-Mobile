@@ -18,25 +18,28 @@ type CategoriaType = {
 
 const Home = ({ route, navigation }) => {
 
-    const { token } = route.params;
-    const [categoria, setCategoria] = useState<CategoriaType[]>([]);
+    // const { token } = route.params;
+    // const [categoria, setCategoria] = useState<CategoriaType[]>([]);
 
-useEffect(() =>{
+    // useEffect(() => {
+    //     getDadosCategoria();
+    // }, []);
 
-}, []);
+    // const getDadosCategoria = async () => {
+    //     Axios.get(
+    //         '/categoria',
+    //         { headers: { "Authorization": `Bearer ${token}` } }
 
-    const getDadosCategoria = async () => {
-        Axios.get(
-            '/categoria',
-            { headers: { "Authorization": `Bearer ${token}` } }
+    //     ).then(result => {
+    //         console.log("dados das categorias" + JSON.stringify(result.data));
+    //         setCategoria(result.data)
+    //     }).catch((error) => {
+    //         console.log("Erro ao carregar " + JSON.stringify(error));
 
-        ).then(result => {
-            console.log("dados das categorias" + JSON.stringify(result.data));
-            setCategoria(result.data)
-        });
-    }
+    //     });
+    // }
 
-    console.log('Token' + token);
+    // console.log('Token' + token);
 
     return (
         <ScrollView >
