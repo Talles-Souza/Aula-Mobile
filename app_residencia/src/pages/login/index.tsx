@@ -1,14 +1,30 @@
-import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useState, useContext } from "react";
+import { View, StyleSheet, Alert } from "react-native";
 import { Button, Icon, Input, Text } from "react-native-elements";
+import { AutenticacaoContext } from "../../context/AutenticacaoContext";
 
 const Login = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const { login } = useContext(AutenticacaoContext);
 
-    const handleLogin = ({ email, senha }) => {
+    const handleLogin = async (email: string, senha: string) => {
         console.log("Email : ", email, "Senha :", senha);
-        navigation.navigate('Home')
+
+        const respostaLogin = await login(email, senha)
+        if (!respostaLogin) {
+            Alert.alert(
+                "Erro",
+                "",
+                [
+                    { text: "Ok" },
+                    { text: "Não foi possivel fazer o login" }
+                ]
+
+            );
+        } else {
+            navigation.navigate('HomeScreen');
+        }
     }
 
     return (
@@ -29,7 +45,7 @@ const Login = ({ navigation }) => {
 
             <Button
                 title='Entrar'
-                onPress={() => handleLogin({ email, senha })}
+                onPress={() => handleLogin(email, senha)}
                 titleStyle={styles.title_Button}
             />
         </View>
