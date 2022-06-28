@@ -1,5 +1,4 @@
-import React from "react";
-import MyHeader from "../../components/header/header";
+import React, { useContext } from "react";
 import MyCard from "../../components/card/card";
 import MyCardImg from "../../components/card/cardImg";
 import { MyCardImg2 } from "../../components/card/cardimg2";
@@ -8,6 +7,10 @@ import { Title } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 import Axios from "../../api/axios";
 import { useEffect, useState } from "react";
+import { AutenticacaoContext } from "../../context/AutenticacaoContext";
+
+
+
 
 type CategoriaType = {
     idCategoria: number;
@@ -17,34 +20,44 @@ type CategoriaType = {
 
 
 const Home = ({ route, navigation }) => {
-
+    const { usuario } = useContext(AutenticacaoContext);
     // const { token } = route.params;
-    // const [categoria, setCategoria] = useState<CategoriaType[]>([]);
+    const [categorias, setCategoria] = useState<CategoriaType[]>([]);
 
-    // useEffect(() => {
-    //     getDadosCategoria();
-    // }, []);
+    useEffect(() => {
+        getDadosCategoria();
+    }, []);
 
-    // const getDadosCategoria = async () => {
-    //     Axios.get(
-    //         '/categoria',
-    //         { headers: { "Authorization": `Bearer ${token}` } }
+    const getDadosCategoria = async () => {
+        Axios.get(
+            '/categoria',
+            { headers: { "Authorization": `Bearer ${usuario.token}` } }
 
-    //     ).then(result => {
-    //         console.log("dados das categorias" + JSON.stringify(result.data));
-    //         setCategoria(result.data)
-    //     }).catch((error) => {
-    //         console.log("Erro ao carregar " + JSON.stringify(error));
+        ).then(result => {
+            console.log("dados das categorias" + JSON.stringify(result.data));
+            setCategoria(result.data)
+        }).catch((error) => {
+            console.log("Erro ao carregar " + JSON.stringify(error));
 
-    //     });
-    // }
+        });
+    }
 
-    // console.log('Token' + token);
+    console.log('Token' + usuario.token);
 
     return (
         <ScrollView >
-            <MyHeader />
-            <MyCard />
+            {/* <MyHeader /> */}
+
+
+            <ScrollView horizontal={true}>
+                {categorias.map((categoria, indice) => (
+                    <MyCard
+                        key={indice}
+                        dados={categoria}
+                    />))}
+            </ScrollView>
+
+
             <View style={{ display: 'flex', marginTop: 15, marginLeft: 15 }}>
                 <Title>Recente</Title>
             </View>

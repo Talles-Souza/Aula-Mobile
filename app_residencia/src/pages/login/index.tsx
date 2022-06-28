@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { Button, Icon, Input, Text } from "react-native-elements";
-import { LoginService } from "../../services/loginService";
-
+import { AutenticacaoContext } from "../../context/AutenticacaoContext";
 
 const Login = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const { login } = useContext(AutenticacaoContext);
 
     const handleLogin = async (email: string, senha: string) => {
         console.log("Email : ", email, "Senha :", senha);
 
-        const RespostaLogin = await LoginService(email, senha)
-        if (!RespostaLogin) {
+        const respostaLogin = await login(email, senha)
+        if (!respostaLogin) {
             Alert.alert(
                 "Erro",
                 "",
@@ -23,20 +23,8 @@ const Login = ({ navigation }) => {
 
             );
         } else {
-            navigation.navigate('Home', {
-                screen: 'TabNavigationScreen',
-                params: {
-                    screen: 'Home',
-
-                    params: {
-                        token: RespostaLogin.token,
-                    }
-                }
-            });
+            navigation.navigate('HomeScreen');
         }
-
-
-
     }
 
     return (
