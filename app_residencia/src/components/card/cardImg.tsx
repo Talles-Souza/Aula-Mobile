@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import View from 'react-native-ui-lib/view';
 import Text from 'react-native-ui-lib/text';
 import { StyleSheet, Animated } from 'react-native';
-import { JumpingTransition } from 'react-native-reanimated';
+
 
 
 //const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
@@ -16,59 +16,19 @@ const MyCardImg = (props: any) => {
     console.log(dadosProduto);
 
     return (
-        <ScrollView  >
 
 
-            <TouchableOpacity style={styles.card}>
-                <Card >
-                    <Card.Image source={require('../../assets/fundo.png')} />
-                    <Card.Divider />
-                    <Card.Title>
-                        {dadosProduto.nomeProduto}
-                    </Card.Title>
-                    <Text>Descrição</Text>
-                </Card>
-            </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
+            <Card >
+                <Card.Image source={require('../../assets/fundo.png')} />
+                <Card.Divider />
+                <Card.Title>
+                    {dadosProduto.nomeProduto}
+                </Card.Title>
+                <Text>Descrição</Text>
+            </Card>
+        </TouchableOpacity>
 
-            {/* <View style={styles.card}> 
-                <Card  >
-                    <Card.Image source={require('../../assets/fundo.png')} />
-                    <Card.Divider />
-                    <Card.Title>
-                        Título
-                    </Card.Title>
-                    <Text>Descrição</Text>
-                </Card>
-            </View>
-
-            <TouchableOpacity style={styles.card}>
-                <Card>
-                    <Card.Image source={require('../../assets/fundo.png')} />
-                    <Card.Divider />
-                    <Card.Title>
-                        Título
-                    </Card.Title>
-                    <Text>Descrição</Text>
-                </Card>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.card}>
-                <Card>
-                    <Card.Image source={require('../../assets/fundo.png')} />
-                    <Card.Divider />
-                    <Card.Title>
-                        Título
-                    </Card.Title>
-                    <Text>Descrição</Text>
-                </Card>
-            </TouchableOpacity> */}
-
-
-
-
-
-
-
-        </ScrollView>
     );
 }
 
