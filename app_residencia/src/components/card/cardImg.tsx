@@ -19,7 +19,7 @@ const MyCardImg = (props: any, navigation) => {
     return (
 
 
-        <TouchableOpacity style={styles.card} onPress={() => { navigation.navigate({ name: 'ProdutoScreen' }) }}>
+        <TouchableOpacity style={styles.card} onPress={() => { navigation.navigate({ name: 'ProdutoScreen'}) }}>
             <Card >
                 <Card.Image source={require('../../assets/fundo.png')} />
                 <Card.Divider />
