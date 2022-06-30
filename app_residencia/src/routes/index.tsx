@@ -8,7 +8,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Login from "../pages/login";
 import Home from "../pages/home";
 import Categorias from "../pages/categorias";
-
+import Categorias2 from "../pages/categorias/categorias";
 
 
 
@@ -67,6 +67,11 @@ const Routes = () => {
                     options={{ headerShown: false }}
                     name='Categorias'
                     component={Categorias}
+                />
+                <StackNavigation.Screen
+                    options={{ headerShown: false }}
+                    name='Categorias2'
+                    component={Categorias2}
                 />
 
             </StackNavigation.Navigator>

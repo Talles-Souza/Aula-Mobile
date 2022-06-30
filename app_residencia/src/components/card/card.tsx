@@ -1,17 +1,21 @@
 import React, { useContext } from 'react';
 import { Card, Title, Paragraph } from 'react-native-paper';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-elements';
 import { CategoriaContext } from '../../context/categoriaContexto';
 
-const MyCard = (props: any) => {
+const MyCard = (props: any, navigation) => {
     const dadosCategoria = props.dados;
     console.log(dadosCategoria);
     const { handleCategoria } = useContext(CategoriaContext);
 
     const handlePress = () => {
-        handleCategoria(props.categoria)
-        props.navigation.navigate('Categorias')
+        if (!handleCategoria) {
+            return Alert.alert('erro ');
+        }
+        else {
+            navigation.navigate('Categorias2')
+        }
     }
 
     // Fazer uma função para receber o índice de categoria, para direcionar ao local correto
