@@ -1,16 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MyCard from "../../components/card/card";
 import MyCardImg from "../../components/card/cardImg";
 import { MyCardImg2 } from "../../components/card/cardimg2";
-import { View } from "react-native";
+import { View, FlatList, ScrollView } from "react-native";
 import { Title } from "react-native-paper";
-import { ScrollView } from "react-native-gesture-handler";
 import Axios from "../../api/axios";
-import { useEffect, useState } from "react";
 import { AutenticacaoContext } from "../../context/AutenticacaoContext";
 import MySearch from '../../components/search';
-
-
+import { Item } from "react-native-paper/lib/typescript/components/List/List";
 
 type CategoriaType = {
     idCategoria: number;
@@ -42,6 +39,30 @@ const Home = ({ route, navigation }) => {
         });
     }
 
+
+    //Get Produto
+
+    const [produtos, setProduto] = useState<any[]>([]);
+
+    useEffect(() => {
+        getDadosProduto();
+    }, []);
+
+    const getDadosProduto = async () => {
+        Axios.get(
+            '/produto',
+            { headers: { "Authorization": `Bearer ${usuario.token}` } }
+
+        ).then(result => {
+            console.log("dados das categorias" + JSON.stringify(result.data));
+            setProduto(result.data)
+        }).catch((error) => {
+            console.log("Erro ao carregar " + JSON.stringify(error));
+
+        });
+    }
+
+
     console.log('Token' + usuario.token);
 
     return (
@@ -61,7 +82,28 @@ const Home = ({ route, navigation }) => {
             <View style={{ display: 'flex', marginTop: 15, marginLeft: 15 }}>
                 <Title>Recente</Title>
             </View>
-            <MyCardImg />
+
+
+            <FlatList
+                horizontal={true}
+                data={produtos}
+                keyExtractor={item => item.idProduto}
+                renderItem={({ item }) =>
+                    <MyCardImg
+                        dados={item}
+                    />
+                }
+            />
+
+            {/* <ScrollView horizontal={true}>
+                {produtos.map((produto, indice) => (
+                    <MyCardImg
+                        key={indice}
+                        dados={produto}
+                    />))}
+            </ScrollView> */}
+
+
             <MyCardImg2 />
         </ScrollView>
     );
