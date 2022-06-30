@@ -23,11 +23,11 @@ let realm_carrinho = new Realm({ schema: [ProdutosSchema], schemaVersion: 1 });
 
 export function CarrinhoProvider({ children }) {
     const listarProdutos = () => {
-        return realm_carrinho.objects('Produtos');
+        return realm_carrinho.objects('Produto');
     }
 
     const contarQuantidadeProdutos = () => {
-        return realm_carrinho.objects('Produtos').length;
+        return realm_carrinho.objects('Produto').length;
     }
     const adicionarProduto = (_sku: string, _nome: string, _descricao: string, _preco: number, _imagem: string) => {
 

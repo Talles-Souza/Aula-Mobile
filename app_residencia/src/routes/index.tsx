@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
+import { Produto } from "../pages/product";
 
 import Login from "../pages/login";
 import Home from "../pages/home";
@@ -70,8 +70,8 @@ const Routes = () => {
                 />
                 <StackNavigation.Screen
                     options={{ headerShown: false }}
-                    name='Categorias2'
-                    component={Categorias2}
+                    name='ProdutoScreen'
+                    component={Produto}
                 />
 
             </StackNavigation.Navigator>

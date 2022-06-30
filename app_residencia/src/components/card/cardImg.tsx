@@ -5,12 +5,13 @@ import { ScrollView } from 'react-native-gesture-handler';
 import View from 'react-native-ui-lib/view';
 import Text from 'react-native-ui-lib/text';
 import { StyleSheet, Animated } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 
 //const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
-const MyCardImg = (props: any) => {
+const MyCardImg = (props: any, navigation) => {
 
     const dadosProduto = props.dados;
     console.log(dadosProduto);
@@ -18,7 +19,7 @@ const MyCardImg = (props: any) => {
     return (
 
 
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => { navigation.navigate({ name: 'ProdutoScreen' }) }}>
             <Card >
                 <Card.Image source={require('../../assets/fundo.png')} />
                 <Card.Divider />
