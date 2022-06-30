@@ -5,8 +5,9 @@ import { Card, Text } from 'react-native-elements';
 import { TouchableOpacity } from "react-native";
 
 
+// Fazer uma função para receber o índice de categoria, para direcionar ao local correto
 
-const Card2 = () => {
+const Card3 = () => {
     return (
 
 
