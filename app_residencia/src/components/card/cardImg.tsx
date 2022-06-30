@@ -10,24 +10,27 @@ import { JumpingTransition } from 'react-native-reanimated';
 
 //const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
-const MyCardImg = () => {
+const MyCardImg = (props: any) => {
+
+    const dadosProduto = props.dados;
+    console.log(dadosProduto);
 
     return (
-        <ScrollView horizontal={true} >
+        <ScrollView  >
 
-            
+
             <TouchableOpacity style={styles.card}>
                 <Card >
                     <Card.Image source={require('../../assets/fundo.png')} />
                     <Card.Divider />
                     <Card.Title>
-                        Título
+                        {dadosProduto.nomeProduto}
                     </Card.Title>
                     <Text>Descrição</Text>
                 </Card>
             </TouchableOpacity>
 
-            <View style={styles.card}> 
+            {/* <View style={styles.card}> 
                 <Card  >
                     <Card.Image source={require('../../assets/fundo.png')} />
                     <Card.Divider />
@@ -57,7 +60,7 @@ const MyCardImg = () => {
                     </Card.Title>
                     <Text>Descrição</Text>
                 </Card>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
 
 

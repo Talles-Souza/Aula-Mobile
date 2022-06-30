@@ -42,6 +42,30 @@ const Home = ({ route, navigation }) => {
         });
     }
 
+
+    //Get Produto
+
+    const [produtos, setProduto] = useState<any[]>([]);
+
+    useEffect(() => {
+        getDadosProduto();
+    }, []);
+
+    const getDadosProduto = async () => {
+        Axios.get(
+            '/produto',
+            { headers: { "Authorization": `Bearer ${usuario.token}` } }
+
+        ).then(result => {
+            console.log("dados das categorias" + JSON.stringify(result.data));
+            setProduto(result.data)
+        }).catch((error) => {
+            console.log("Erro ao carregar " + JSON.stringify(error));
+
+        });
+    }
+
+
     console.log('Token' + usuario.token);
 
     return (
@@ -61,7 +85,15 @@ const Home = ({ route, navigation }) => {
             <View style={{ display: 'flex', marginTop: 15, marginLeft: 15 }}>
                 <Title>Recente</Title>
             </View>
-            <MyCardImg />
+            <ScrollView horizontal={true}>
+                {produtos.map((produto, indice) => (
+                    <MyCardImg
+                        key={indice}
+                        dados={produto}
+                    />))}
+            </ScrollView>
+
+
             <MyCardImg2 />
         </ScrollView>
     );
