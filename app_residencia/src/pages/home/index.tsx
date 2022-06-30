@@ -8,7 +8,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import Axios from "../../api/axios";
 import { useEffect, useState } from "react";
 import { AutenticacaoContext } from "../../context/AutenticacaoContext";
-
+import MySearch from '../../components/search';
 
 
 
@@ -48,7 +48,7 @@ const Home = ({ route, navigation }) => {
         <ScrollView >
             {/* <MyHeader /> */}
 
-
+            <MySearch />
             <ScrollView horizontal={true}>
                 {categorias.map((categoria, indice) => (
                     <MyCard
