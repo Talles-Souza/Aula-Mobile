@@ -25,4 +25,14 @@ export function CarrinhoProvider({ children }) {
     const listarProdutos = () => {
         return realm_carrinho.objects('Produtos');
     }
+
+    const contarQuantidadeProdutos = () => {
+        return realm_carrinho.objects('Produtos').length;
+    }
+    const adicionarProduto = (_sku: string, _nome: string, _descricao: string, _preco: number, _imagem: string) => {
+
+        const ultimoProdutoCadastrado = realm_carrinho.objects('Produto').sorted('id_produto', true)[0];
+    }
+
+
 }
