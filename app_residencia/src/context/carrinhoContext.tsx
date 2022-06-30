@@ -50,5 +50,13 @@ export function CarrinhoProvider({ children }) {
 
     }
 
-
+    return (
+        <CarrinhoContext.Provider value={{
+            listarProdutos,
+            contarQuantidadeProdutos,
+            adicionarProduto,
+        }}>
+            {children}
+        </CarrinhoContext.Provider>
+    );
 }
