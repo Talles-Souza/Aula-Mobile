@@ -1,25 +1,26 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-elements';
-
-
-
-
-
-
+import { CategoriaContext } from '../../context/categoriaContexto';
 
 const MyCard = (props: any) => {
     const dadosCategoria = props.dados;
     console.log(dadosCategoria);
+    const { handleCategoria } = useContext(CategoriaContext);
 
+    const handlePress = () => {
+        handleCategoria(props.categoria)
+        props.navigation.navigate('Categorias')
+    }
 
+    // Fazer uma função para receber o índice de categoria, para direcionar ao local correto
 
     return (
 
-        <TouchableOpacity onPress={() => console.log('categotia 1')}
+        <TouchableOpacity
             style={styles.botao_categoria}
-        >
+            onPress={handlePress}>
             <Card style={{ display: 'flex', width: 99, height: 90, backgroundColor: '#1cd1f1' }}>
                 <Card.Content style={{ justifyContent: 'center', marginTop: 18, display: 'flex' }}>
                     <Text style={styles.categoria_nome}>{dadosCategoria.nomeCategoria}</Text>

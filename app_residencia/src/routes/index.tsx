@@ -68,6 +68,7 @@ const Routes = () => {
                     name='Categorias'
                     component={Categorias}
                 />
+
             </StackNavigation.Navigator>
         </NavigationContainer>
 
