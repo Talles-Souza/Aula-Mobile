@@ -19,4 +19,10 @@ ProdutosSchema.schema = {
     }
 };
 
-let realm_carrinho = new Realm({ schema: [ProdutosSchema], schemaVersion: 1 })
+let realm_carrinho = new Realm({ schema: [ProdutosSchema], schemaVersion: 1 });
+
+export function CarrinhoProvider({ children }) {
+    const listarProdutos = () => {
+        return realm_carrinho.objects('Produtos');
+    }
+}
