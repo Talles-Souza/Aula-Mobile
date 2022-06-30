@@ -1,17 +1,19 @@
 import React, { useState, useContext } from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert, ActivityIndicator } from "react-native";
 import { Button, Icon, Input, Text } from "react-native-elements";
 import { AutenticacaoContext } from "../../context/AutenticacaoContext";
 
-const Login = ({ navigation }) => {
+const Login = ({ navigation }: any) => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const { login } = useContext(AutenticacaoContext);
+    const [isLoading, setLoading] = useState(false);
 
     const handleLogin = async (email: string, senha: string) => {
         console.log("Email : ", email, "Senha :", senha);
 
-        const respostaLogin = await login(email, senha)
+        const respostaLogin = await login(email, senha);
+        setLoading(false);
         if (!respostaLogin) {
             Alert.alert(
                 "Erro",
@@ -37,17 +39,18 @@ const Login = ({ navigation }) => {
                 leftIcon={<Icon name='user' color='#000' type='font-awesome' size={24} />}
             />
             <Input
-                placeholder='E-mail'
+                placeholder='Senha'
                 onChangeText={setSenha}
                 value={senha}
                 leftIcon={<Icon name='key' color='#000' type='font-awesome' size={24} />}
+                secureTextEntry
             />
-
-            <Button
-                title='Entrar'
-                onPress={() => handleLogin(email, senha)}
-                titleStyle={styles.title_Button}
-            />
+            {isLoading === false ?
+                <Button
+                    title='Entrar'
+                    onPress={() => { handleLogin(email, senha); setLoading(true) }}
+                    titleStyle={styles.title_Button}
+                /> : <ActivityIndicator size="large" />}
         </View>
     );
 }

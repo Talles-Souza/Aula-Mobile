@@ -39,6 +39,8 @@ const NavigationDrawer = () => {
             <DrawerNavigation.Screen
                 name="CategoriasDrawerScreen"
                 component={Categorias}
+                options={{ title: 'Categorias' }}
+
             />
 
         </DrawerNavigation.Navigator>
@@ -52,12 +54,19 @@ const Routes = () => {
         <NavigationContainer>
             <StackNavigation.Navigator>
                 <StackNavigation.Screen
+                    options={{ headerShown: false }}
                     name='Login'
                     component={Login}
                 />
                 <StackNavigation.Screen
+                    options={{ headerShown: false }}
                     name='HomeScreen'
                     component={NavigationDrawer}
+                />
+                <StackNavigation.Screen
+                    options={{ headerShown: false }}
+                    name='Categorias'
+                    component={Categorias}
                 />
             </StackNavigation.Navigator>
         </NavigationContainer>

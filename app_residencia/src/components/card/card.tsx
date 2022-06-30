@@ -3,8 +3,7 @@ import { Card, Title, Paragraph } from 'react-native-paper';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
-import Axios from "../../api/axios";
-import { useEffect, useState } from "react";
+
 
 
 
