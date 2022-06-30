@@ -17,9 +17,14 @@ type CategoriaType = {
 
 
 const Home = ({ route, navigation }) => {
+
+
+
+
+    //get categoria
     const { usuario } = useContext(AutenticacaoContext);
     // const { token } = route.params;
-    const [categorias, setCategoria] = useState<CategoriaType[]>([]);
+    const [categorias, setCategoria] = useState<any[]>([]);
 
     useEffect(() => {
         getDadosCategoria();
@@ -70,13 +75,24 @@ const Home = ({ route, navigation }) => {
             {/* <MyHeader /> */}
 
             <MySearch />
-            <ScrollView horizontal={true}>
+
+            <FlatList
+                horizontal={true}
+                data={categorias}
+                keyExtractor={item => item.idCategoria}
+                renderItem={({ item }) =>
+                    <MyCard
+                        dados={item}
+                    />
+                }
+            />
+            {/* <ScrollView horizontal={true}>
                 {categorias.map((categoria, indice) => (
                     <MyCard
                         key={indice}
                         dados={categoria}
                     />))}
-            </ScrollView>
+            </ScrollView> */}
 
 
             <View style={{ display: 'flex', marginTop: 15, marginLeft: 15 }}>

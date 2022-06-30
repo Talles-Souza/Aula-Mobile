@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-elements';
-import { ScrollView } from 'react-native-gesture-handler';
+
 
 
 
@@ -16,19 +16,17 @@ const MyCard = (props: any) => {
 
 
     return (
-        <ScrollView style={styles.scroll_categorias} >
-            <TouchableOpacity onPress={() => console.log('categotia 1')}
-                style={styles.botao_categoria}
-            >
-                <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: 25 }}>
-                    <Card style={{ display: 'flex', width: 99, height: 90, justifyContent: 'center', backgroundColor: '#00ff00' }}>
-                        <Card.Content style={{ justifyContent: 'center', marginTop: 18, display: 'flex' }}>
-                            <Text style={styles.categoria_nome}>{dadosCategoria.nomeCategoria}</Text>
-                        </Card.Content>
-                    </Card>
-                </View>
-            </TouchableOpacity>
-        </ScrollView >
+
+        <TouchableOpacity onPress={() => console.log('categotia 1')}
+            style={styles.botao_categoria}
+        >
+            <Card style={{ display: 'flex', width: 99, height: 90, backgroundColor: '#1cd1f1' }}>
+                <Card.Content style={{ justifyContent: 'center', marginTop: 18, display: 'flex' }}>
+                    <Text style={styles.categoria_nome}>{dadosCategoria.nomeCategoria}</Text>
+                </Card.Content>
+            </Card>
+        </TouchableOpacity>
+
 
     );
 
@@ -44,6 +42,7 @@ const MyCard = (props: any) => {
     botao_categoria: {
         alignItems: 'center',
         padding: 10,
+
     },
     categoria_nome: {
         color: '#fff',
