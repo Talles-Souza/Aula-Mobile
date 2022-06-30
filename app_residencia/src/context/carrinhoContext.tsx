@@ -32,6 +32,22 @@ export function CarrinhoProvider({ children }) {
     const adicionarProduto = (_sku: string, _nome: string, _descricao: string, _preco: number, _imagem: string) => {
 
         const ultimoProdutoCadastrado = realm_carrinho.objects('Produto').sorted('id_produto', true)[0];
+        const ultimoIdCadastrado = ultimoProdutoCadastrado == null ? 0 : ultimoProdutoCadastrado.id_produto;
+        const proximoId = ultimoIdCadastrado == null ? 1 : ultimoIdCadastrado + 1;
+
+        realm_carrinho.write(() => {
+            const produto = realm_carrinho.create('Produto', {
+                id_produto: proximoId,
+                sku: _sku,
+                nome_produto: _nome,
+                descricao_produto: _descricao,
+                preco_produto: _preco,
+                imagem_produto: _imagem
+
+            });
+
+        });
+
     }
 
 
