@@ -7,7 +7,7 @@ import { TouchableOpacity } from "react-native";
 
 // Fazer uma função para receber o índice de categoria, para direcionar ao local correto
 
-const Card3 = () => {
+export const Card3 = () => {
     return (
 
 
@@ -101,6 +101,4 @@ const styles = StyleSheet.create({
         textAlign: 'center',
 
     }
-})
-
-export default Card2;
+});

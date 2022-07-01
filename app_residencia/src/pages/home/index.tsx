@@ -83,6 +83,7 @@ const Home = ({ route, navigation }) => {
                 renderItem={({ item }) =>
                     <MyCard
                         dados={item}
+                        navigation={navigation}
                     />
                 }
             />
@@ -107,6 +108,7 @@ const Home = ({ route, navigation }) => {
                 renderItem={({ item }) =>
                     <MyCardImg
                         dados={item}
+                        navigation={navigation}
                     />
                 }
             />
@@ -120,7 +122,9 @@ const Home = ({ route, navigation }) => {
             </ScrollView> */}
 
 
-            <MyCardImg2 />
+            <MyCardImg2
+
+            />
         </ScrollView>
     );
 }

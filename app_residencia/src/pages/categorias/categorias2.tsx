@@ -4,11 +4,11 @@ import Axios from "../../api/axios";
 import MySearch from '../../components/search';
 import { StyleSheet } from "react-native";
 import { AutenticacaoContext } from "../../context/AutenticacaoContext";
-import Card2 from "../../components/card/card2";
+import { Card3 } from "../../components/card/card3";
 
 
 
-const Categorias2 = () => {
+const Categorias2 = ({ navigation }) => {
 
     //get categoria ainda nao está pronto
 
@@ -39,7 +39,7 @@ const Categorias2 = () => {
     return (
         <ScrollView style={styles.container}>
             <MySearch />
-            <Card2 />
+            <Card3 />
         </ScrollView>
     );
 }

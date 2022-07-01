@@ -11,20 +11,21 @@ import { NavigationContainer } from '@react-navigation/native';
 
 //const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
-const MyCardImg = (props: any, navigation) => {
+const MyCardImg = ({ navigation, dados }) => {
 
-    const dadosProduto = props.dados;
-    console.log(dadosProduto);
+    //const dadosProduto = props.dados;
+    // const navigation = props.navigation;
+    console.log('navigation', navigation);
 
     return (
 
 
-        <TouchableOpacity style={styles.card} onPress={() => { navigation.navigate({ name: 'ProdutoScreen'}) }}>
+        <TouchableOpacity style={styles.card} onPress={() => { navigation.navigate({ name: 'ProdutoScreen' }) }}>
             <Card >
                 <Card.Image source={require('../../assets/fundo.png')} />
                 <Card.Divider />
                 <Card.Title>
-                    {dadosProduto.nomeProduto}
+                    {dados.nomeProduto}
                 </Card.Title>
                 <Text>Descrição</Text>
             </Card>

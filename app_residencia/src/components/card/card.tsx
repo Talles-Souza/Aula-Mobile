@@ -4,19 +4,11 @@ import { Alert, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-elements';
 import { CategoriaContext } from '../../context/categoriaContexto';
 
-const MyCard = (props: any, navigation) => {
-    const dadosCategoria = props.dados;
-    console.log(dadosCategoria);
-    const { handleCategoria } = useContext(CategoriaContext);
+const MyCard = ({ dados, navigation }) => {
+    //const dadosCategoria = props.dados;
+    //console.log(dadosCategoria);
 
-    const handlePress = () => {
-        if (!handleCategoria) {
-            return Alert.alert('erro ');
-        }
-        else {
-            navigation.navigate('Categorias2')
-        }
-    }
+
 
     // Fazer uma função para receber o índice de categoria, para direcionar ao local correto
 
@@ -24,10 +16,10 @@ const MyCard = (props: any, navigation) => {
 
         <TouchableOpacity
             style={styles.botao_categoria}
-            onPress={handlePress}>
+            onPress={() => { navigation.navigate({ name: 'Categorias' }) }}>
             <Card style={{ display: 'flex', width: 99, height: 90, backgroundColor: '#1cd1f1' }}>
                 <Card.Content style={{ justifyContent: 'center', marginTop: 18, display: 'flex' }}>
-                    <Text style={styles.categoria_nome}>{dadosCategoria.nomeCategoria}</Text>
+                    <Text style={styles.categoria_nome}>{dados.nomeCategoria}</Text>
                 </Card.Content>
             </Card>
         </TouchableOpacity>

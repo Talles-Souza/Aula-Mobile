@@ -8,7 +8,7 @@ import { Produto } from "../pages/product";
 import Login from "../pages/login";
 import Home from "../pages/home";
 import Categorias from "../pages/categorias";
-import Categorias2 from "../pages/categorias/categorias";
+import Categorias2 from "../pages/categorias/categorias2";
 
 
 
@@ -68,6 +68,7 @@ const Routes = () => {
                     name='Categorias'
                     component={Categorias}
                 />
+
                 <StackNavigation.Screen
                     options={{ headerShown: false }}
                     name='ProdutoScreen'
